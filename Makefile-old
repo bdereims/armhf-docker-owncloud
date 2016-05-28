@@ -1,0 +1,8 @@
+NAME=owncloud
+VOLUME=/mnt/gv-01/Volumes/ownclound
+
+build: Dockerfile
+	docker build -t bdereims/armhf-owncloud .
+
+run:
+	docker run -d -p 8080:80 -p 8443:443 -v $(VOLUME):/var/www/owncloud/data --name $(NAME) bdereims/armhf-owncloud
